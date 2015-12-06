@@ -23,40 +23,40 @@
     <%= f.label :date %><br>
     <%= f.datetime_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
 	<%= f.fields_for :adress do |address| %>
 		<div>
-			<%= address.label%>
+			<%= address.label :street %>
 			<%= address.text_field :street %>
 		</div>
 		<div>
-			<%= address.label%>
+			<%= address.label :number %>
 			<%= address.text_field :number %>
 		</div>
 		<div>
-			<%= address.label%>
+			<%= address.label :district %>
 			<%= address.text_field :district %>
 		</div>
 		<div>
-			<%= address.label %>
+			<%= address.label :zip_code %>
 			<%= address.text_field :zip_code %>
 		</div>
 		<div>
-			<%= address.label %>
+			<%= address.label :city %>
 			<%= address.text_field :city %>
 		</div>
 		<div>
-			<%= address.label %>
+			<%= address.label :estate %>
 			<%= address.text_field :estate %>
 		</div>
 		<div>
-			<%= address.label %>
+			<%= address.label :country %>
 			<%= address.text_field :country %>
 		</div>
-  <% end %>
+	<% end %>
+  <div class="field">
+		<%= f.label :images %>
+		<%= f.file_field :images, multiple: true, name: "award[award_imaes][]", accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

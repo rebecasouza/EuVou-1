@@ -47,7 +47,7 @@ gem 'bootstrap-sass'
 
 # images
 gem 'rmagick'
-gem 'carrierwave'
+gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
 
 #customizing urls
 gem 'friendly_id', '~> 5.1.0'
