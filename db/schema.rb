@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206142513) do
+ActiveRecord::Schema.define(version: 20151206175723) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -21,9 +21,15 @@ ActiveRecord::Schema.define(version: 20151206142513) do
     t.string   "city"
     t.string   "estate"
     t.string   "country"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "addresses", ["event_id"], name: "index_addresses_on_event_id"
+
+# Could not dump table "events" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "identities", force: :cascade do |t|
     t.string   "uid"
