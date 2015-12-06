@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  has_many :posts, dependent: :destroy
   has_many :identities, dependent: :destroy
 
   after_create :set_default_role, if: Proc.new { User.count > 1 }
