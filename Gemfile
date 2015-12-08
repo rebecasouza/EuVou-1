@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
+# Ruby version
 ruby '2.2.3'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,16 +32,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# User authentication and authorization 
+# User authentication and authorization
 gem 'devise'
 gem 'rolify'
 gem 'authority'
 
-# omniauth for devise
+# Omniauth for devise
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-foursquare'
 
 # styles
 gem 'bootstrap-sass'
@@ -81,7 +83,5 @@ group :production do
 	gem 'pg', group: :production
 	#testing
   gem 'rails_12factor', group: :production
-	
+
 end
-
-
