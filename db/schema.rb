@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206175723) do
+ActiveRecord::Schema.define(version: 20151207114103) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -28,8 +28,24 @@ ActiveRecord::Schema.define(version: 20151206175723) do
 
   add_index "addresses", ["event_id"], name: "index_addresses_on_event_id"
 
-# Could not dump table "events" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.text     "images"
+    t.string   "street"
+    t.string   "number"
+    t.string   "district"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "estate"
+    t.string   "country"
+  end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "identities", force: :cascade do |t|
     t.string   "uid"
@@ -63,11 +79,16 @@ ActiveRecord::Schema.define(version: 20151206175723) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "image"
     t.string   "slug"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.text     "images"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

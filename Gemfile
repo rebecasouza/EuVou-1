@@ -46,6 +46,9 @@ gem 'omniauth-foursquare'
 
 # styles
 gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'simple_form_fancy_uploads'
+gem 'country_select'
 
 # images
 gem 'rmagick'

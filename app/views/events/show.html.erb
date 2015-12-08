@@ -1,53 +1,46 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<script>
+	FB.ui({
+		method: 'share',
+		href: 'https://developers.facebook.com/docs/',
+	}, function(response){
+	});
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+</script>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.images.each do |image| %>
-		<%= image.url %>
-	<% end %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.street %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.number %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.district %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.zip_code %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.city%>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.estate %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.country %>
-</p>
+<div class='event'>
+  <div class="title">
+    <h3><%= @event.title %></h3>
+  </div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <div class="content">
+		<%= simple_format @event.description %><br>
+		<%= simple_format @event.date.strftime("Ocorrerá em %B %d") %><br>
+		<p>Localização</p>
+		<%= simple_format @event.street %><br>
+		<%= simple_format @event.number %><br>
+		<%= simple_format @event.district %><br>
+		<%= simple_format @event.zip_code %><br>
+		<%= simple_format @event.city %><br>
+		<%= simple_format @event.estate %><br>
+		<%= simple_format @event.country %><br>
+  </div>
+
+  <div class="user">
+    <strong>Criado por </strong>
+		<%= @event.user.present? ? @event.user.email : "an anonymous user" %>,
+		<%= time_ago_in_words(@event.created_at) %> ago
+  </div>
+</div>
+<hr>
+<a class="share" data-tooltip="Compartilhar" onClick="window.open('https://www.facebook.com/dialog/feed?'+
+								'app_id=141375232895092&'+
+								'display=popup&'+
+								'link=http://localhost:3000/<%=@event.id%>&'+
+																											'picture=<%if @event.images.size != nil%>http://localhost:3000<%=@event.images[0]%><% end %>&'+
+																											'name=<%=@event.title%>&'+
+																											'redirect_uri=http://www.houseit.com/competitions/<%=@event.id%>'+
+																											'description=<%=@event.description%>">Compartilhe este evento</a>	
+						<div id="fb-root"></div>
+<%= link_to 'Editar', edit_event_path(@event), class: 'btn btn-default' %>
+<%= link_to 'Voltar', events_path, class: 'btn btn-default' %>
