@@ -30,11 +30,20 @@ module ApplicationHelper
     user.roles.map(&:name).join(', ').titleize
   end
 
-  def link_to_provider(user)
+	def link_to_provider(user)
     provider = user.identities.map(&:provider).join(', ')
     provider = case provider
-    when 'facebook' then link_to( 'Ir para o Facebook', 'http://www.facebook.com' )
-    when 'twitter' then link_to( 'Ir para o Twitter', 'http://twitter.com' )
+    when 'facebook' then link_to(
+			if user == current_user
+				'Ir para o Facebook'
+			else
+				user.name
+			end, 'http://www.facebook.com' )
+    when 'twitter' then link_to( if user == current_user
+			'Ir para o Twitter'
+			else
+				user.name
+			end, 'http://twitter.com' )
 		#when 'foursquare' then link_to( 'Go to Foursquare', 'http://foursquare.com' )
 		#when 'google'    then link_to( 'Go to Google', 'http://google.com')
     end

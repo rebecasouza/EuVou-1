@@ -4,11 +4,11 @@
     <h3><%= @event.title %></h3>
   </div>
 	<div>
-		<%= image_tag @event.images.thumb %>
+		<%= image_tag @event.images.url(:event) %>
 	</div><br>
   <div class="content">
 		<%= simple_format @event.description %><br>
-		<%= simple_format @event.date.strftime("Ocorrerá em %d %B de %Y") %><br>
+		<%= simple_format @event.date.strftime("Ocorrerá em %d %B de %Y ") %><br>
 		<p>Localização</p>
 		<%= simple_format @event.street %><br>
 		<%= simple_format @event.number %><br>
@@ -18,11 +18,13 @@
 		<%= simple_format @event.estate %><br>
 		<%= simple_format @event.country %><br>
   </div>
-
+	<div class="share">
+		<%= social_share_button_tag(@event.title, :url => @event, :image => @event.images.thumb, desc: @event.description, via: @event.user.name) %>
+	</div>
   <div class="user">
-    <strong>Criado por </strong>
-		<%= @event.user.name %>
-		<%= time_ago_in_words(@event.created_at) %> ago
+    Criado por
+	<strong><%= @event.user.name %></strong>
+		<%= time_ago_in_words(@event.created_at) %> atrás
   </div>
 </div>
 <hr>
