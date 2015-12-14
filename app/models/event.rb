@@ -4,10 +4,7 @@ class Event < ActiveRecord::Base
 	
 	belongs_to :user
 	
-	has_one :address, dependent: :destroy
-	accepts_nested_attributes_for :address #, regect_if: proc {|attributes| attributes["street"].blank?}
-	
-	mount_uploaders :images, ImageUploader
+	mount_uploader :images, ImageUploader
 
 end
 

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-	before_action :authenticate_user!, only: [ :new, :edit, :create, :update, :destroy ]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+	before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+	
   # GET /events
   # GET /events.json
   def index
@@ -16,7 +16,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-		@event.address.build!
   end
 
   # GET /events/1/edit
@@ -47,7 +46,6 @@ class EventsController < ApplicationController
 		authorize_action_for @event
     respond_to do |format|
       if @event.update(event_params)
-				@event.update(:adress_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -72,11 +70,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
-			@event.address.build if @event.address.empty?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-			params.require(:event).permit(:title, :description, :date, {images: []}, address_attributes: [:id, :street, :number, :district, :zip_code, :city, :estate, :country])
+			params.require(:event).permit(:title, :description, :date,  :user_id, :images, :street, :number, :district, :zip_code, :city, :estate, :country)
     end
 end

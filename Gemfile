@@ -44,8 +44,14 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-foursquare'
 
+# social sharing
+gem 'social-share-button'
+
 # styles
 gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'simple_form_fancy_uploads'
+gem 'country_select'
 
 # images
 gem 'rmagick'

@@ -1,53 +1,33 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class='event'>
+  <div class="title">
+    <h3><%= @event.title %></h3>
+  </div>
+	<div>
+		<%= image_tag @event.images.thumb %>
+	</div><br>
+  <div class="content">
+		<%= simple_format @event.description %><br>
+		<%= simple_format @event.date.strftime("Ocorrerá em %d %B de %Y") %><br>
+		<p>Localização</p>
+		<%= simple_format @event.street %><br>
+		<%= simple_format @event.number %><br>
+		<%= simple_format @event.district %><br>
+		<%= simple_format @event.zip_code %><br>
+		<%= simple_format @event.city %><br>
+		<%= simple_format @event.estate %><br>
+		<%= simple_format @event.country %><br>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.images.each do |image| %>
-		<%= image.url %>
-	<% end %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.street %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.number %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.district %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.zip_code %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.city%>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.estate %>
-</p>
-<p>
-  <strong>Images:</strong>
-	<% @event.address.country %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <div class="user">
+    <strong>Criado por </strong>
+		<%= @event.user.name %>
+		<%= time_ago_in_words(@event.created_at) %> ago
+  </div>
+</div>
+<hr>
+<% if @event.user == current_user %>
+<td><%= link_to 'Editar', edit_event_path(@event), class: 'btn btn-default'%></td>
+	<td><%= link_to 'Remover', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+<% end %>
+<%= link_to 'Voltar', events_path, class: 'btn btn-default' %>
