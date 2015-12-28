@@ -1,0 +1,35 @@
+
+<div class='event'>
+  <div class="title">
+    <h3><%= @event.title %></h3>
+  </div>
+	<div>
+		<%= image_tag @event.images.url(:event) %>
+	</div><br>
+  <div class="content">
+		<%= simple_format @event.description %><br>
+		<%= simple_format @event.date.strftime("Ocorrerá em %d %B de %Y ") %><br>
+		<p>Localização</p>
+		<%= simple_format @event.street %><br>
+		<%= simple_format @event.number %><br>
+		<%= simple_format @event.district %><br>
+		<%= simple_format @event.zip_code %><br>
+		<%= simple_format @event.city %><br>
+		<%= simple_format @event.estate %><br>
+		<%= simple_format @event.country %><br>
+  </div>
+  <div class="user">
+    Criado por
+	<strong><%= @event.user.name %></strong>
+		<%= time_ago_in_words(@event.created_at) %> atrás
+  </div>
+	<div class="share">
+		<%= social_share_button_tag(@event.title, :image => @event.images, desc: @event.description, :popup => "true") %></p>
+	</div>
+</div>
+<hr>
+<% if @event.user == current_user %>
+<td><%= link_to 'Editar', edit_event_path(@event), class: 'btn btn-default'%></td>
+	<td><%= link_to 'Remover', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+<% end %>
+<%= link_to 'Voltar', events_path, class: 'btn btn-default' %>

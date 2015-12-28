@@ -1,0 +1,40 @@
+<%= simple_form_for @event, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+		<%= f.input :title, label: 'Título', input_html: { class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+		<%= f.input :description, label: 'Descrição', input_html: { class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+   
+		<%= f.input :date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, discard_day: false, order: [:day, :month, :year], label: 'Data' %>
+  </div>
+	<div class="form-group">
+		<%= f.input :street, label: 'Rua', input_html: { class: 'form-control' } %>
+	</div>
+	<div class="form-group">
+		<%= f.input :number, label: 'Número', input_html: { class: 'form-control' } %>
+	</div>
+	<div class="form-group">
+		<%= f.input :district, label: 'Bairro', input_html: { class: 'form-control' } %>
+	</div>
+	<div class="form-group">
+		<%= f.input :zip_code, label: 'CEP', input_html: { class: 'form-control' } %>
+	</div>
+	<div class="form-group">
+		<%= f.input :city, label: 'Cidade', input_html: { class: 'form-control' } %>
+	</div>
+	<div class="for
+	m-group">
+		<%= f.input :estate, label: 'Estado', input_html: { class: 'form-control' } %>
+	</div>
+	<div class="form-group">
+		<%= f.input :country, label: 'País', input_html: { class: 'form-control' } %>
+	</div>
+  <div class="form-group">
+		<%= f.file_field :images, label: "Adicionar Imagem", accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+  </div>
+  <%= f.button :submit, "Confirmar", class: 'btn btn-default'%>
+<% end %><br>
