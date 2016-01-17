@@ -54,6 +54,8 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'simple_form_fancy_uploads'
 gem 'country_select'
+gem 'materialize-sass'
+
 
 #icons
 gem "font-awesome-rails" #https://github.com/bokmann/font-awesome-rails

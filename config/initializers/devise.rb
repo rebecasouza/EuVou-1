@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-	config.mailer_sender = 'rebeca_souza85@hotmail.com'
+	config.mailer_sender = 'nayaarocha@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -236,7 +236,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-	config.omniauth :facebook, '1495646454073290', 'a3cbf4a4d6ad63abddb3ddfde34aa6b1'
+	config.omniauth :facebook, '1047312255310533', 'a9d79204f3974ed574911c0ebb5fa642'
   config.omniauth :twitter, 'YqbpRLhFqt8Sn0nz5GQVX5ldQ', 'Ggzkeud7jw0oEeSQXq1xul754v9jh2Sbg62U3G9AF28yy7fEVX'
   #config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
   #config.omniauth :foursquare, ENV["FOURSQUARE_CLIENT_ID"], ENV["FOURSQUARE_CLIENT_SECRET"] 

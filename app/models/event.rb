@@ -6,5 +6,8 @@ class Event < ActiveRecord::Base
 	
 	mount_uploader :images, ImageUploader
 
+
+
+
 end
 

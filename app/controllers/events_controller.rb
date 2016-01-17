@@ -1,16 +1,23 @@
 class EventsController < ApplicationController
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-	
+
+  respond_to :json
   # GET /events
   # GET /events.json
   def index
 		@events = Event.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {render json: @events.as_json}
+    end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+
   end
 
   # GET /events/new
