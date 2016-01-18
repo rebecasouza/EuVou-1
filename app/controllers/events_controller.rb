@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   def index
 		@events = Event.order(created_at: :desc)
 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json {render json: @events.as_json}

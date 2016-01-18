@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   resources :events
-	
+
 	root 'events#index'
-	
+
 	match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-  
+
 	devise_for :users, :controllers => { registration: 'registration' ,omniauth_callbacks: 'omniauth_callbacks' }
+
+  #rota para exibir perfil do usuario
+	match '/profile/:id/', controller: 'users', action: 'show', via: 'get'
 
 
   #devise_for :users,
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

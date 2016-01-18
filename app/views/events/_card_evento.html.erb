@@ -4,13 +4,20 @@
         <div class="card">
 
           <div class="card-image card_evento waves-effect waves-block waves-light">
+            <span class="data_evento"><%= event.date.time.strftime('%v')%></span>
             <%= link_to (image_tag event.images.thumb), event, class: 'activator' %>
 
           </div>
 
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= event.title %><i class="material-icons right">more_vert</i></span>
-            <p><a href="#"><%= event.date.time.strftime('%v')%></a></p>
+            <span class="card-title activator"><b><%= event.title %></b></span>
+            <p><a href="#"></a></p>
+            <div class="chip">
+              <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSS7LzvmOXfVn-4FbWg29rWY6I6kqN4K-llhZCyTGog0uyZM0lU" alt="Contact Person">
+              <%= event.user.name %>
+            </div>
+             <span class="activator icon_option"><i class="material-icons right">more_vert</i></span>
+
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>

@@ -11,18 +11,12 @@
    
 		<%= f.input :date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, discard_day: false, order: [:day, :month, :year], label: 'Data' %>
   </div>
+
+
 	<div class="form-group">
-		<%= f.input :street, label: 'Rua', input_html: { class: 'form-control' } %>
+		<%= f.input :local, label: 'Local', input_html: { class: 'form-control' } %>
 	</div>
-	<div class="form-group">
-		<%= f.input :number, label: 'Número', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :district, label: 'Bairro', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :zip_code, label: 'CEP', input_html: { class: 'form-control' } %>
-	</div>
+
 	<div class="form-group">
 		<%= f.input :city, label: 'Cidade', input_html: { class: 'form-control' } %>
 	</div>

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :events
   rolify
   include Authority::UserAbilities
 
