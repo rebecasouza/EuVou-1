@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :identities, dependent: :destroy
 
   after_create :set_default_role, if: Proc.new { User.count > 1 }
+  mount_uploader :image, ImageUploader
 
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
 
-  mount_uploader :avatar, ImageUploader, :mount_on => :avatar_file_name
+
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

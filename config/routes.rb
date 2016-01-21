@@ -1,24 +1,34 @@
 Rails.application.routes.draw do
-  resources :events
-
 	root 'events#index'
+  resources :events
+ # resources :users
 
+
+	#match "/profile/:id/show" => "users#show", :as => 'show',via: [:get, :patch]
 	match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+	match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show
 
+
+ #match '/users/:id',   to: 'users#show',  via: 'get'
 	devise_for :users, :controllers => { registration: 'registration' ,omniauth_callbacks: 'omniauth_callbacks' }
 
-  #rota para exibir perfil do usuario
-	match '/profile/:id/', controller: 'users', action: 'show', via: 'get'
+	#match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :show_user
+
 
 
   #devise_for :users,
-        # :controllers => { :sessions => 'devise/sessions'},
-        # :skip => [:sessions] do
-      # get '/login' => "devise/sessions#new", :as => :new_user_session
-      # post '/login' => 'devise/sessions#create', :as => :user_session
+       #:controllers => { :sessions => 'devise/sessions'},
+       #  :skip => [:sessions] do
+
+			# get '/show' => "devise/registrations#show", :as => :new_user_session
+
+     # get '/login' => "devise/sessions#new", :as => :new_user_session
+     # post '/login' => 'devise/sessions#create', :as => :user_session
       # get '/signout' => 'devise/sessions#destroy', :as => :destroy_user_session
       # get '/signup' => 'devise/registrations#new', :as => :new_user_registration
-  #end
+    	#get 'edit' => 'devise/registrations#edit', :as => :edit_user_registration_path
+
+ # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

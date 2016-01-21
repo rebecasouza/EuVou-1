@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # user_show.html.erb
       format.json {render json: @events.as_json}
     end
   end
@@ -82,6 +82,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-			params.require(:event).permit(:title, :description, :date,  :user_id, :images, :street, :number, :district, :zip_code, :city, :estate, :country)
+			params.require(:event).permit(:title, :description, :date,  :user_id, :images, :street, :number, :district, :zip_code, :city, :estate, :country ,:local)
     end
 end

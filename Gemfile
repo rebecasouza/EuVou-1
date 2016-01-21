@@ -47,7 +47,7 @@ gem 'omniauth-foursquare'
 
 # social sharing
 gem 'social-share-button'
-
+gem 'haml'
 # styles
 gem 'bootswatch-rails' #https://github.com/maxim/bootswatch-rails
 gem 'bootstrap-sass'
