@@ -33,6 +33,9 @@
 	<div class="form-group">
 		<%= f.input :country, label: 'País', input_html: { class: 'form-control' } %>
 	</div>
+	<div class="form-group">
+		<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Escolha uma categoria"},  { class: 'form-control' } %>
+	</div>
   <div class="form-group">
 		<%= f.file_field :images, label: "Adicionar Imagem", accept: "image/jpeg, image/jpg, image/gif, image/png" %>
   </div>
