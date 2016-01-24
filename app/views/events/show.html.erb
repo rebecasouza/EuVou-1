@@ -24,7 +24,7 @@
 		<%= time_ago_in_words(@event.created_at) %> atrás
   </div>
 	<div class="share">
-		<%= social_share_button_tag(@event.title, :image => @event.images, desc: @event.description, :popup => "true") %></p>
+		<p><%= social_share_button_tag(@event.title, :image => @event.images, desc: @event.description, :popup => "true") %></p>
 	</div>
 </div>
 <hr>

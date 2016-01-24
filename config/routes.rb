@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-	root 'events#index'
+
+  root 'events#index'
   resources :events
+  resources :categories
  # resources :users
 
 
@@ -29,6 +31,14 @@ Rails.application.routes.draw do
     	#get 'edit' => 'devise/registrations#edit', :as => :edit_user_registration_path
 
  # end
+  resources :events
+	
+	root 'events#index'
+	
+	match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  
+	devise_for :users, :controllers => { registration: 'registration' ,omniauth_callbacks: 'omniauth_callbacks' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -37,6 +47,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
 
+  #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
