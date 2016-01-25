@@ -15,7 +15,8 @@
  <script  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/css/bootstrap-material-design.css"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing">
+</script>
 
 </head>
 <body>
@@ -44,6 +45,7 @@
 		<%= render partial: "shared/flash_messages", flash: flash %>
   
 		<%= yield %>
+		
 	</div> <!-- /container -->
 
 </body>
@@ -51,5 +53,5 @@
 
 
 </script>
-\
+
 </html>
