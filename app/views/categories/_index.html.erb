@@ -1,0 +1,7 @@
+<ul>
+  <% @categories.each do |category| %>
+    <li>
+      <%= link_to category.name, events_path(params[category_search: category.name]) %> (<%= category.events.count %>)
+    </li>
+  <% end %>
+</ul>
