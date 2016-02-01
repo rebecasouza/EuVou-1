@@ -4,7 +4,8 @@ class Event < ActiveRecord::Base
 	
 	belongs_to :user
   belongs_to :category
-	
+  has_many :comments, dependent: :destroy
+  has_many :users, through: :comments
 	mount_uploader :image, ImageUploader
 
 
@@ -12,7 +13,7 @@ class Event < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where(['lower(title) LIKE ?', "%#{search.downcase}%"])
+      where('lower(title) LIKE ? or category.name LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
     else
       all
     end

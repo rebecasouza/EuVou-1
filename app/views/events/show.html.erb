@@ -1,38 +1,61 @@
 
 <div class='event'>
-  <div class="title">
+  <div class='title'>
     <h3><%= @event.title %></h3>
   </div>
-  <div class="row">
-    <div class="col-md-8 col-xs-6">
+  <div class='row'>
+    <div class='col-md-6 col-xs-6'>
       <%= image_tag @event.image.url(:event) %>
-    </div><br>
-    <div class="col-md-4 col-xs-6">
-      <%= @event.description %><br>
-      <b>Data:</b> <%= @event.date.strftime("%d/%b/%Y") %><br>
-      <b>Local:</b> <%= @event.location %>
+    <div class='share'>
+      <p><%= social_share_button_tag(@event.title, :image => @event.image, desc: @event.description, :popup => 'true') %></p>
+    </div>
+    </div>
+    <div class='col-md-6 col-xs-6 info'>
+      <b>Local:</b> <%= @event.location %> <br>
+      <b>Data:</b> <%= @event.date.strftime('%d/%b/%Y') %><br>
+      <b>Horário:</b> <%= @event.date.strftime('%I:%M hrs') %><br>
+      <div id='map-container'>
+        <div id='map-canvas'>
+        </div>
+      </div>
     </div>
   </div>
-   <div id="map-container">
-     <div id="map-canvas">
-       
-     </div>
-   </div>
-  <div class="user">
+  <div class='row'>
+    <%= @event.description %><br>
+  </div>
+  <div class='user'>
     <%= time_ago_in_words(@event.created_at) %> atrás
   </div>
-</div>
-<div class="share">
-  <p><%= social_share_button_tag(@event.title, :image => @event.image, desc: @event.description, :popup => "true") %></p>
 </div>
 <hr>
 <% if @event.user == current_user %>
   <td><%= link_to 'Editar', edit_event_path(@event), class: 'btn btn-default'%></td>
 	<td><%= link_to 'Remover', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-<% end %>
+<% end %><br><br>
+
+<div class="row">
+  <h6><b>Comentários <%= @event.comments.count %></b></h6> 
+</div>
+<!-- add comment -->
+<div class="post_comment">
+  <div class='row'>
+   <div class="col-md-1">
+     <%= image_tag(current_user.image.comment_user_thumb) %>
+   </div>
+   <div class="coll-md-9">
+     <%= render 'comments/form' %>
+   </div>
+  </div>
+</div><br>
+
+<!-- commnts list -->
+<div id='comments'>
+  <%= render @event.comments.order(created_at: :desc) %>
+</div> <br><br>
+
 <%= link_to 'Voltar', events_path, class: 'btn btn-default' %><br>
 
-<script type="text/javascript">
+<script type='text/javascript'>
   function initialize(lat,lon) {
         
       var center = new google.maps.LatLng(lat, lon);
@@ -45,7 +68,7 @@
     var marker = new google.maps.Marker({
         position: center,
         map: map,
-        title: "Aqui!"
+        title: 'Aqui!'
       });
   };
   google.maps.event.addDomListener(window, 'load', initialize(<%= @event.lat %>, <%= @event.lon %>));
