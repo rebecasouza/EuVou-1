@@ -5,10 +5,9 @@ RSpec.describe "categories/new", type: :view do
     assign(:category, Category.new())
   end
 
-  it "renders new category form" do
-    render
+  it "shouldn`t renders new category form" do
+    
 
-    assert_select "form[action=?][method=?]", categories_path, "post" do
-    end
+    expect{render}.to raise_error(ActionView::MissingTemplate)
   end
 end

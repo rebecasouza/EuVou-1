@@ -52,10 +52,13 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
+  # Categorias não poderá ser criada pelos usuários, logo, não terá a página new => erro esperado: MissingTemplate
   describe "GET #new" do
     it "assigns a new category as @category" do
-      get :new, {}, valid_session
-      expect(assigns(:category)).to be_a_new(Category)
+      
+      #expect(assigns(:category)).to be_a_new(Category)
+      expect{get :new, {}, valid_session}.to raise_error(ActionView::MissingTemplate)
+
     end
   end
 
