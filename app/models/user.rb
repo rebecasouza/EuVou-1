@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :events
   rolify
   include Authority::UserAbilities
 
@@ -9,6 +8,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :identities, dependent: :destroy
 
+  has_many :events
+  has_many :comments
+  
   after_create :set_default_role, if: Proc.new { User.count > 1 }
   mount_uploader :image, ImageUploader
 
