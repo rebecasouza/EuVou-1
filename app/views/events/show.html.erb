@@ -11,7 +11,7 @@
     </div>
     </div>
     <div class='col-md-6 col-xs-6 info'>
-      <b>Local:</b> <%= @event.location %> <br>
+      <b>Local:</b> <%# @event.location %> <br>
       <b>Data:</b> <%= @event.date.strftime('%d/%b/%Y') %><br>
       <b>Horário:</b> <%= @event.date.strftime('%I:%M hrs') %><br>
       <div id='map-container'>
@@ -55,7 +55,7 @@
 
 <%= link_to 'Voltar', events_path, class: 'btn btn-default' %><br>
 
-<script type='text/javascript'>
+<!--script type='text/javascript'>
   function initialize(lat,lon) {
         
       var center = new google.maps.LatLng(lat, lon);
@@ -71,8 +71,8 @@
         title: 'Aqui!'
       });
   };
-  google.maps.event.addDomListener(window, 'load', initialize(<%= @event.lat %>, <%= @event.lon %>));
+  google.maps.event.addDomListener(window, 'load', initialize(<%# @event.lat %>, <%# @event.lon %>));
 
-</script>
+</script>-->
 
 

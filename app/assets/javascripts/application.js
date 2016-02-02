@@ -15,6 +15,7 @@
 //= require social-share-button
 //= require bootstrap
 //= require turbolinks
-//= require_tree 
+// require_tree
 //= require materialize-sprockets
+//= require init
 
