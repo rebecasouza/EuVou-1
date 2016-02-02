@@ -13,7 +13,8 @@ class Event < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where('lower(title) LIKE ? or category.name LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
+      #where('lower(title) LIKE ?', "%#{search.downcase}%")
+      joins("INNER JOIN 'categories' ON 'categories'.id = category_id").where('lower(title) LIKE ? or categories.name LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
     else
       all
     end
