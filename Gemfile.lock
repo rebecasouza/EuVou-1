@@ -126,6 +126,9 @@ GEM
       railties (>= 3.2, < 5.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.3.0)
+    geocomplete_rails (1.6.5)
+      railties (>= 3.1)
     gherkin (3.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -320,6 +323,8 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   friendly_id (~> 5.1.0)
+  geocoder
+  geocomplete_rails
   haml
   jbuilder (~> 2.0)
   jquery-rails
