@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129200459) do
+ActiveRecord::Schema.define(version: 20160211010124) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "location"
+    t.float    "lat"
+    t.float    "lon"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -34,15 +43,8 @@ ActiveRecord::Schema.define(version: 20160129200459) do
     t.string   "title"
     t.text     "description"
     t.string   "image"
-    t.datetime "date"
-    t.string   "location"
-    t.string   "street"
-    t.string   "city"
-    t.string   "number"
-    t.string   "zip_code"
-    t.string   "country"
-    t.float    "lat"
-    t.float    "lon"
+    t.date     "date"
+    t.time     "time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
