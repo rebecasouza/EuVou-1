@@ -1,6 +1,6 @@
 <%= simple_form_for [@event, Comment.new]	do |f| %>
   <div class='row'>
-    <%= f.input :body, label: 'Novo comentário', as: :text, input_html: { rows: '2', style: 'width:850px; float: right;'} %>
+    <%= f.input :body, label: 'Novo comentário', as: :text, input_html: { rows: '2', style: 'width:800px; float: right;'} %>
   </div>
   <div class="row">
     <%= f.submit 'Salvar', class: 'btn btn-primary',  style: 'float: right; width: 100px !important; padding: 0 !important;' %>
