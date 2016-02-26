@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211010124) do
+ActiveRecord::Schema.define(version: 20160224033919) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "location"
@@ -42,13 +42,21 @@ ActiveRecord::Schema.define(version: 20160211010124) do
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image"
-    t.date     "date"
-    t.time     "time"
+    t.datetime "date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.text     "images"
+    t.string   "street"
+    t.string   "number"
+    t.string   "district"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "estate"
+    t.string   "country"
+    t.string   "local"
     t.integer  "category_id"
+    t.string   "location"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id"
@@ -95,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160211010124) do
     t.string   "slug"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.text     "images"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
