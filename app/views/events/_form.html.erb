@@ -18,14 +18,14 @@
 		<%= f.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png", class: 'form-control col-md-6' %>
   </div><br><br>
   <h5>Endereço</h5>
-  <%= f.fields_for :address do |address_fields| %>
-    <%= address_fields.label :location, 'Local' %>
-    <%= address_fields.text_field :location, class: "location" %>
-    <%= address_fields.hidden_field :lat, class: "longitude" %>
-    <%= address_fields.hidden_field :lon,  class: "latitude" %>
-  <% end %>
+	<%= f.fields_for :address do |address_fields| %>
+		<%= address_fields.label :location, 'Local' %>
+		<%= address_fields.text_field :location, class: "location" %>
+		<%= address_fields.hidden_field :place,  class: "place" %>
+		<%= address_fields.hidden_field :lat, class: "latitude" %>
+		<%= address_fields.hidden_field :lon,  class: "longitude" %>
+	<% end %>
   <script src="//maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
-  <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" type="text/javascript"></script>
   <div id="map-container" style="width: 700px; height: 400px;">
     <div id="map" style="width: 870px; height: 400px;"></div>
   </div>
