@@ -1,7 +1,7 @@
 <%= javascript_include_tag("reg_map.js") %>
- <%= simple_form_for @event, html: { multipart: true } do |f| %>
-  <%= f.error_notification %>
 
+<%= simple_form_for @event, html: { multipart: true } do |f| %>
+    <%= f.error_notification %>
   <div class="form-group">
 		<%= f.input :title, label: 'Título', class: 'form-control' %>
   </div>

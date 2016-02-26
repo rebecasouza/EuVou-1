@@ -4,7 +4,7 @@
       <div class="card">
 
         <div class="card-image card_evento waves-effect waves-block waves-light">
-          <span class="data_evento"><%= event.date.strftime('%d/%b/%Y')%></span>
+          <span class="data_evento"><%= event.date.strftime('%d %b %Y')%></span>
           <%= link_to (image_tag event.image.thumb), event, class: 'activator' %>
         </div>
 
@@ -20,7 +20,8 @@
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
-          <p>Local:<%# event.location %></p>
+          <p>Local:<%=event.location %></p>
+
           <p>Comentários <%= event.comments.count %></p>
         </div>
 
