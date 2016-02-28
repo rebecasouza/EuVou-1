@@ -5,6 +5,8 @@ App.init = ->
 # Initialize collapse button
   $('.button-collapse').sideNav()
 
+  $('ul.tabs').tabs()
+
 
   #script facebook
   window.fbAsyncInit = ->

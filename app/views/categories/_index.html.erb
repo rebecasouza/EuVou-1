@@ -1,7 +1,16 @@
-<ul>
+<div class="row">
   <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, events_path(params[category_search: category.name]) %> (<%= category.events.count %>)
-    </li>
+    <div class="col s12 m4 category">
+      <div class="card-panel teal">
+            <span class="white-text">
+              <%= link_to category.name, events_path(params[category_search: category.name]) %>
+                <div class="chip">
+                  <%= category.events.count %>
+                </div>
+            </span>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+
