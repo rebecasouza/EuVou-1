@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226174825) do
+ActiveRecord::Schema.define(version: 20160227215947) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "location"
@@ -40,22 +40,26 @@ ActiveRecord::Schema.define(version: 20160226174825) do
   add_index "comments", ["event_id"], name: "index_comments_on_event_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "eu_vous", force: :cascade do |t|
+    t.boolean  "euvou"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "eu_vous", ["event_id"], name: "index_eu_vous_on_event_id"
+  add_index "eu_vous", ["user_id"], name: "index_eu_vous_on_user_id"
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "date"
+    t.string   "image"
+    t.date     "date"
+    t.time     "time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.text     "images"
-    t.string   "street"
-    t.string   "number"
-    t.string   "district"
-    t.string   "zip_code"
-    t.string   "city"
-    t.string   "estate"
-    t.string   "country"
-    t.string   "local"
     t.integer  "category_id"
   end
 
@@ -103,7 +107,6 @@ ActiveRecord::Schema.define(version: 20160226174825) do
     t.string   "slug"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.text     "images"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

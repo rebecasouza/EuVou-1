@@ -16,10 +16,11 @@
 !/log/.keep
 log/
 tmp/*.cache
-tmp/
+tmp/*
 /tmp
 /tmp/*
 
 .DS_Store
 db/.DS_Store
 public/uploads/* 
+application.yml
