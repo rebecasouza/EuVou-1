@@ -56,6 +56,15 @@ class User < ActiveRecord::Base
         user.save!
       end
     end
+		
+		def largeimage
+			"http://graph.facebook.com/#{self.uid}/picture?type=large"
+		end
+	 
+		def normalimage
+			"http://graph.facebook.com/#{self.uid}/picture?type=normal"
+		end
+
 
     # Associate the identity with the user if needed
     if identity.user != user
