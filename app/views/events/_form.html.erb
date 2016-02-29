@@ -14,8 +14,15 @@
   </div>
   <div class=form-group>
 		<%= f.input :date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, discard_day: false, order: [:day, :month, :year], label: 'Data', class: 'form-control col-md-6' %>
-    <label for="event[image]">Imagem</label>
-		<%= f.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png", class: 'form-control col-md-6' %>
+		<%= f.time_select :time, label: 'Horário', class: 'form-control col-md-6' %>
+   
+		<% if @event.image.url.present? %>
+			<%= image_tag @event.image.url(:form_preview) %>
+		<% end %><br>
+		<%= f.label :image, 'Alterar imagem'  do %>
+			<%= f.file_field :image, class: 'form-control', label: false %>
+			<%= f.hidden_field :image_cache %>
+		<% end %>
   </div><br><br>
   <h5>Endereço</h5>
 	<%= f.fields_for :address do |address_fields| %>
@@ -25,12 +32,11 @@
 		<%= address_fields.hidden_field :lat, class: "latitude" %>
 		<%= address_fields.hidden_field :lon,  class: "longitude" %>
 	<% end %>
-  <script src="//maps.googleapis.com/maps/api/js?libraries=places" type="text/javascript"></script>
-  <div id="map-container" style="width: 700px; height: 400px;">
-    <div id="map" style="width: 870px; height: 400px;"></div>
+  <div id="map-container" style="width: 100%; height: 400px;">
+    <div id="map" style="width: 100%; height: 400px;"></div>
   </div>
 	<div class="form-group">
     <%= f.button :submit, "Confirmar", class: 'btn btn-default', style: 'width: 200px; padding:0;' %>
-    <%= link_to 'Cancelar', events_path, class: 'btn btn-secondary', style: 'background-color: #586161;' %>
+    <%= link_to 'Cancelar', root_url, class: 'btn btn-secondary', style: 'background-color: #586161;' %>
 	</div>
 <% end %>
