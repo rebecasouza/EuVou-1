@@ -55,7 +55,9 @@
 <div class="post_comment">
   <div class='row'>
    <div class="col-md-1">
-     <%= image_tag(current_user.image.url(:comment_user_thumb)) %>
+		 <% if current_user %>
+		 	<%= image_tag(current_user.image.url(:comment_user_thumb)) %>
+		 <% end %>
    </div>
    <div class="coll-md-9">
      <%= render 'comments/form' %>

@@ -65,7 +65,6 @@ class User < ActiveRecord::Base
 			"http://graph.facebook.com/#{self.uid}/picture?type=normal"
 		end
 
-
     # Associate the identity with the user if needed
     if identity.user != user
       identity.user = user
@@ -99,9 +98,6 @@ class User < ActiveRecord::Base
   def cancel!(event)
 		self.eu_vous.find_by(attended_event_id: event.id).destroy
   end
-
-	
-	
 	
   private
 
