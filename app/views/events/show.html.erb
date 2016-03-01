@@ -10,7 +10,7 @@
 				<%= render 'eu_vou_form' %>
 			<% end %>
     <div class='share'>
-      <p><%= social_share_button_tag(@event.title, :image => @event.image, desc: @event.description, :popup => 'true') %></p>
+      <p><%= social_share_button_tag(@event.title, :image => @event.images, desc: @event.description, :popup => 'true') %></p>
     </div>
     </div>
     <div class='col-md-6 col-xs-6 info'>

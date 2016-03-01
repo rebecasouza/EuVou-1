@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160227215947) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "category_id"
+    t.string   "location"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id"

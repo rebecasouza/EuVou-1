@@ -11,7 +11,6 @@ class Event < ActiveRecord::Base
 	has_many :attendees, through: :eu_vous
 
 	mount_uploader :image, ImageUploader
-  
   accepts_nested_attributes_for :address, allow_destroy: true
 
 	validates_presence_of :category

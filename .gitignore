@@ -24,3 +24,5 @@ tmp/*
 db/.DS_Store
 public/uploads/* 
 application.yml
+
+db/development.sqlite3
