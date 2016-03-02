@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'e981dd2357b6011b47aa0d0b74119c29be5fe65413f930ba957f7ae57c8f196b4ac68592059fd3f4b8ec4054bd4fc36f7eef7f3498019e90f5b0c5101e2e6be3'
+  config.secret_key = 
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -236,9 +236,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-	config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
-  config.omniauth :twitter, ENV['TWITTER_APP_KEY'], ENV['TWITTER_APP_SECRET']
-  #config.omniauth :google_oauth2, '276724472150-sh5fbgah1vjqe4gj7o4g5ctgu1i0av0e.apps.googleusercontent.com', 'B-3dfFI4hpSpkQp6HVBWgDjG'
+	config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
+  config.omniauth :twitter, ENV["TWITTER_APP_KEY"], ENV["TWITTER_APP_SECRET"]
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
   #config.omniauth :foursquare, ENV["FOURSQUARE_CLIENT_ID"], ENV["FOURSQUARE_CLIENT_SECRET"] 
 	#
   # ==> Warden configuration

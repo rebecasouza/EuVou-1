@@ -5,12 +5,20 @@
   </div>
   <div class='row'>
     <div class='col-md-6 col-xs-6'>
-      <%= image_tag @event.image.url(:event) %>
+      <%= image_tag @event.image.url(:event) %><br>
       <% if signed_in? %>
-				<%= render 'eu_vou_form' %>
+				<% if current_user.attending?(@event) %>
+					<%= link_to eu_vou_path(current_user.eu_vous.find_by(attended_event_id: @event.id)), method: :delete do %>
+			<i class="fa fa-child fa-2x icons"></i>Eu vou (<%= @event.attendees.count %>)
+					<% end %>	 
+				<% else %>
+					<%= link_to eu_vous_path(:eu_vou => { attended_event_id: @event.id, attendee_id: current_user.id }), method: :post do %>
+						<i class="fa fa-child fa-2x icons"></i>Eu vou
+					<% end %>	 
+				<% end %>
 			<% end %>
     <div class='share'>
-      <p><%= social_share_button_tag(@event.title, :image => @event.images, desc: @event.description, :popup => 'true') %></p>
+      <p><%= social_share_button_tag(@event.title, :image => @event.image, desc: @event.description, :popup => 'true') %></p>
     </div>
     </div>
     <div class='col-md-6 col-xs-6 info'>
