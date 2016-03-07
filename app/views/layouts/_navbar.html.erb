@@ -34,10 +34,7 @@
   </ul>
   <ul class="right hide-on-med-and-down">
     <% if user_signed_in? %>
-       <% if current_user.identities.size == 0 %>
-		<li><a href=""><%= link_to (image_tag current_user.normalimage, class: 'profile_img'), user_show_path(current_user) %></a></li>
-			<% else%>
-		<li><a href=""><%= link_to (image_tag current_user.image.url(:comment_user_thumb) , class: 'profile_img'), user_show_path(current_user) %></a></li>
+			<li><a href=""><%= link_to (image_tag current_user.image.url(:comment_user_thumb) , class: 'profile_img'), user_show_path(current_user) %></a></li>
 			<% end %>
         <li>
           <a class="dropdown-button" href="" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>
