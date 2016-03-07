@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
 					name: auth.info.name || auth.extra.nickname ||  auth.uid,
 					email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
 					password: Devise.friendly_token[0,20],
-					image: auth.info.image
+					image_url: auth.info.image
 					
         )
         user.skip_confirmation!
