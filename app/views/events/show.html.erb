@@ -24,7 +24,7 @@
     <div class='col-md-6 col-xs-6 info'>
 			<b>Local:</b> <%= @event.address.place %> <br>
       <b>Data:</b> <%= @event.date.strftime('%d/%b/%Y') %><br>
-      <b>Horário: </b>
+      <b>Horário: </b>20:00 h<br>
     	<%= @event.description %><br>
 			<% if @event.attendees.any? %>
 				<% if @event.attendees.count == 1 %>

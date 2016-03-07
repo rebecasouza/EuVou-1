@@ -38,6 +38,8 @@
           		<%= event.address.place %>
 						<% end %>
 					</p>
+					<p>Data: <%= event.date %></p>
+					<p>Horário: <%= event.time %> </p>
           <p>Comentários: <%= event.comments.count %></p>
 					<p> EuVous: <%= event.attendees.count %></p>
 					<p><%= truncate(strip_tags(event.description), length: 241) %></p>
