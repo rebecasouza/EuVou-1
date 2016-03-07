@@ -47,10 +47,11 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          name: auth.info.name || auth.extra.nickname ||  auth.uid,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20],
-					image_url: largeimage
+					user.name = auth.info.name || auth.extra.nickname ||  auth.uid,
+					user.email = email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+					user.password = Devise.friendly_token[0,20],
+					user.image = auth.info.image
+					
         )
         user.skip_confirmation!
         user.save!
