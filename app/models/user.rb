@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 					
 					if identity.provider == "facebook"
 						
-						image_url: "http://graph.facebook.com/#{self.uid}/picture?type=large"
+						image: "http://graph.facebook.com/#{self.uid}/picture?type=large"
 					elsif identity.provider == "twitter"
 						image: auth.info.image
 					end
