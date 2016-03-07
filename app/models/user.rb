@@ -52,8 +52,8 @@ class User < ActiveRecord::Base
 					password: Devise.friendly_token[0,20],
 					
 					if identity.provider == "facebook"
-						user.image_url = "http://graph.facebook.com/#{self.uid}/picture?type=large"
-					else
+						image_url: "http://graph.facebook.com/#{self.uid}/picture?type=large",
+					elsif identity.provider == "twitter"
 						image: auth.info.image
 					end
 						
