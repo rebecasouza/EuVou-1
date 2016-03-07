@@ -47,10 +47,10 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-					user.name = auth.info.name || auth.extra.nickname ||  auth.uid,
-					user.email = email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-					user.password = Devise.friendly_token[0,20],
-					user.image = auth.info.image
+					name: auth.info.name || auth.extra.nickname ||  auth.uid,
+					email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+					password: Devise.friendly_token[0,20],
+					image: auth.info.image
 					
         )
         user.skip_confirmation!
@@ -58,14 +58,6 @@ class User < ActiveRecord::Base
       end
     end
 		
-		def largeimage
-			"http://graph.facebook.com/#{self.uid}/picture?type=large"
-		end
-	 
-		def normalimage
-			"http://graph.facebook.com/#{self.uid}/picture?type=normal"
-		end
-
     # Associate the identity with the user if needed
     if identity.user != user
       identity.user = user
