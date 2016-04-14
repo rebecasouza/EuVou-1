@@ -1,0 +1,11 @@
+<div class="row">
+  <% @categories.each do |category| %>
+      <div class="col s12 m4">
+        <div class="card-panel teal">
+              <span class="white-text"> <%= link_to category.name, events_path(params[category_search: category.name]) %> (<%= category.events.count %>)
+              </span>
+        </div>
+      </div>
+
+  <%end%>
+</div>
