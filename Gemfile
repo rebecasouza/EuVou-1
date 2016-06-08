@@ -59,6 +59,9 @@ gem 'materialize-sass'
 #icons
 gem "font-awesome-rails" #https://github.com/bokmann/font-awesome-rails
 
+# environment variables
+gem 'figaro'
+
 # images
 gem 'rmagick'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
