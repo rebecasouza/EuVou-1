@@ -4,8 +4,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.string :image
-      t.date :date
-      t.time :time
+      t.string :time
       t.boolean :active
 
       t.timestamps
