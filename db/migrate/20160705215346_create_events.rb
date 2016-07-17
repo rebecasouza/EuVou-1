@@ -4,8 +4,11 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.string :image
-      t.string :time
+      t.time :time
       t.boolean :active
+      t.string :location
+      t.float :lat
+      t.float :lon
 
       t.timestamps
     end

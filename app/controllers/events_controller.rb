@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
+    params[:time] = Time.parse(params[:time])
     @event = Event.new(event_params)
 
     if @event.save
@@ -46,6 +47,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:title, :description, :image, :time, :active)
+      params.require(:event).permit(:title, :description, :image, :time, :active, :location, :lat, :lon)
     end
 end

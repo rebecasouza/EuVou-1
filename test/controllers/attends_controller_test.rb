@@ -12,7 +12,7 @@ class AttendsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create attend" do
     assert_difference('Attend.count') do
-      post attends_url, params: { attend: { event_id: @attend.event_id } }, as: :json
+      post attends_url, params: { attend: {  } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class AttendsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update attend" do
-    patch attend_url(@attend), params: { attend: { event_id: @attend.event_id } }, as: :json
+    patch attend_url(@attend), params: { attend: {  } }, as: :json
     assert_response 200
   end
 
