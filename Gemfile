@@ -100,8 +100,8 @@ end
 
 
 group :production do
-	gem 'pg', group: :production
+	gem 'pg'
 	#testing
-  gem 'rails_12factor', group: :production
+  gem 'rails_12factor'
 
 end
