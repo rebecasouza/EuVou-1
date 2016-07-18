@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.time :time
       t.string :image
       t.references :user, foreign_key: true
+      t.references :category, foreign_key: true
 
       t.timestamps
     end
