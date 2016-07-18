@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  resources :notifications
+
+  resources :euvous
+
+  resources :reports
+
+  resources :categories
 end
