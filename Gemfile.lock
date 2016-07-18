@@ -82,6 +82,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     codeclimate-test-reporter (0.6.0)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
@@ -137,6 +143,7 @@ GEM
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (2.99.2)
+    mimemagic (0.3.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     mocha (1.1.0)
@@ -310,6 +317,7 @@ DEPENDENCIES
   byebug
   capistrano-rails
   capybara
+  carrierwave
   codeclimate-test-reporter
   coffee-rails (~> 4.2)
   database_cleaner
