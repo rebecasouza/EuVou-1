@@ -1,3 +1,3 @@
-class Category < ActiveRecord::Base
-	has_many :events, dependent: :destroy
+class Category < ApplicationRecord
+	has_many :events
 end

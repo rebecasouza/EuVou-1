@@ -1,59 +1,55 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :destroy]
 
+  # GET /comments
+  def index
+    @comments = Comment.all
+
+    render json: @comments
+  end
+
+  # GET /comments/1
+  def show
+    render json: @comment
+  end
+
+  # POST /comments
   def create
-    @event = Event.find(params[:event_id])
-    @comment = @event.comments.create!(params.require(:comment).permit(:body))
-    @comment.user = current_user
+    @comment = @commentable.comments.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @event }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      render json: @comment, status: :created, location: @comment
+    else
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /comments/1
-  # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
-      authorize_action_for @comment
-
-      if @comment.update(comment_params)
-        format.html { redirect_to @event }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.update(comment_params)
+      render json: @comment
+    else
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /comments/1
-  # DELETE /comments/1.json
   def destroy
-    authorize_action_for @comment
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @event }
-      format.json { head :no_content }
-    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
-      @event = @comment.event
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def find_commentable
+      @commentable = Event.find_by_id(params[:event_id]) if params[:album_id]
+    end
+
+    # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:body, :user_id, :event_id)
+      params.require(:comment).permit(:body, :commentable_id, :commentable_type, :user_id)
     end
 end

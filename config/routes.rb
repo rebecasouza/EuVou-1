@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
+  #use_doorkeeper
 
-  root 'events#index'
+  resources :comments, only: [:show, :destroy] 
   
-  resources :events do
-    resources :comments, only: [:create, :destroy]
+  resources :events, shallow: true do
+  	resources :comments, only: [:index, :create], module: 'events'
   end
-  resources :categories
-	resources :eu_vous, only: [:create, :destroy]
-  
-	match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-	match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show
-	devise_for :users, :controllers => { registration: 'registration', omniauth_callbacks: 'omniauth_callbacks' }
 
+  resources :users
+
+  resources :notifications
+
+  resources :euvous
+
+  resources :reports
+
+  resources :categories
 end

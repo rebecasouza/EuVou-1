@@ -1,38 +1,51 @@
 class UsersController < ApplicationController
-  before_action  :set_user, :finish_signup
+  before_action :set_user, only: [:show, :update, :destroy]
 
-   def index
-     @users = User.find.all
-   end
+  # GET /users
+  def index
+    @users = User.all
 
-  def finish_signup
-    if request.patch? && params[:user] 
-      if current_user.update(user_params)
-        current_user.skip_reconfirmation!
-        sign_in(current_user, :bypass => true)
-				redirect_to root_path, notice: 'Perfil atualizado com sucesso.'
-      else
-        @show_errors = true
-      end
+    render json: @users
+  end
+
+  # GET /users/1
+  def show
+    render json: @user
+  end
+
+  # POST /users
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      render json: @user, status: :created, location: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
-	def user_show
-		@user = User.find(params[:id])
-		@previous_events = @user.previous_events
-		@upcoming_events = @user.upcoming_events
-	end
-	
+  # PATCH/PUT /users/1
+  def update
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /users/1
+  def destroy
+    @user.destroy
+  end
+
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-
+    # Only allow a trusted parameter "white list" through.
     def user_params
-			accessible = [ :name, :email, :remeber_me, :image, :image_cache ] # extend with your own params
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
+      params.require(:user).permit(:name, :email, :password, :admin)
     end
-
 end
