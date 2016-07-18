@@ -1,0 +1,7 @@
+<%= form_for(current_user.eu_vous.build(attended_event_id: @event.id)) do |f| %>
+  <div><%= f.hidden_field :attended_event_id %></div>
+  <%= button_tag(type: 'submit') do %>
+ 		<i class="fa fa-child fa-2x icons"></i>Eu vou
+<% end %>
+
+
