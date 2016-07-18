@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :events
+  #use_doorkeeper
+
+  resources :comments, only: [:show, :destroy] 
+  
+  resources :events, shallow: true do
+  	resources :comments, only: [:index, :create], module: 'events'
+  end
+
   resources :users
-  use_doorkeeper
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
