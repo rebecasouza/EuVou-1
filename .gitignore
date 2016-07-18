@@ -21,7 +21,6 @@ tmp/*.cache
 .DS_Store
 db/.DS_Store
 
-Gemfile.lock
 public/*
 public 
 application.yml
