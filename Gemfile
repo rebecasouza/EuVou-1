@@ -32,6 +32,8 @@ gem 'capistrano-rails', group: :development
 
 gem 'figaro'
 
+gem 'carrierwave'
+
 gem 'doorkeeper'
 
 group :development, :test do
