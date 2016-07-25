@@ -36,6 +36,8 @@ gem 'carrierwave'
 
 gem 'cloudinary'
 
+gem "rmagick", "~>2.13.2", :require => 'RMagick'
+
 gem 'doorkeeper'
 
 group :development, :test do
