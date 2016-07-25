@@ -33,8 +33,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :event_idex do
+  version :event_index do
     process resize_to_fit: [300, 200]
+  end
+
+  version :event_show do
+    process resize_to_fit: [450, 450]
   end
 
   version :user_thumb do

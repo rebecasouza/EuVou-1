@@ -5,4 +5,7 @@ class User < ApplicationRecord
 	#has_many :notifications, as: :recipient
 
 	mount_uploader :image, ImageUploader
+
+	validates :email, presence: true, uniqueness: true
+
 end
