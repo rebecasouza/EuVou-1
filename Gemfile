@@ -33,6 +33,7 @@ gem 'capistrano-rails', group: :development
 gem 'figaro'
 
 gem 'carrierwave'
+gem 'cloudinary'
 
 gem 'doorkeeper'
 
