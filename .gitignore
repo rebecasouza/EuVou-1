@@ -7,20 +7,15 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-
 # Ignore all logfiles and tempfiles.
 /log/*
-!/log/.keep
-log/
-tmp/*.cache
-/tmp
 /tmp/*
+!/log/.keep
+!/tmp/.keep
 
-.DS_Store
-db/.DS_Store
-
-public/*
-public 
-application.yml
+# Ignore Byebug command history file.
+.byebug_history
+../.DS_Store
+**/.DS_Store
+# Ignore application configuration
+/config/application.yml
