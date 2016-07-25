@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   resources :reports
 
-  resources :categories
+  resources :categories, only: [:index, :show ]
 end

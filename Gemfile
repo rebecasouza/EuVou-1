@@ -30,10 +30,15 @@ gem 'rack-cors'
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 
+# Environment variables
 gem 'figaro'
 
+# Image upload
 gem 'carrierwave'
+gem 'cloudinary'
+gem 'rmagick'
 
+# Authentication
 gem 'doorkeeper'
 
 group :development, :test do

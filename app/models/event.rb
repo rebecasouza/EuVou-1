@@ -7,4 +7,6 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :euvous
   has_many :users, through: :euvous
+
+  mount_uploader :image, ImageUploader
 end
