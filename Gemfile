@@ -30,11 +30,15 @@ gem 'rack-cors'
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 
+# Environment variables
 gem 'figaro'
 
+# Image upload
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'rmagick'
 
+# Authentication
 gem 'doorkeeper'
 
 group :development, :test do
@@ -54,6 +58,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'sextant'
 end
 
 
