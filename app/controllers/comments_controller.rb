@@ -1,20 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :destroy]
-
-  # GET /comments
-  def index
-    @comments = Comment.all
-
-    render json: @comments
-  end
-
-  # GET /comments/1
-  def show
-    render json: @comment
-  end
+  before_action :find_commentable, only: [:create, :update, :destroy,]
+  before_action :doorkeeper_authorize! 
 
   # POST /comments
   def create
+    @event = Event.find(params[:event_id])
     @comment = @commentable.comments.new(comment_params)
 
     if @comment.save
@@ -40,12 +30,9 @@ class CommentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
-
     def find_commentable
-      @commentable = Event.find_by_id(params[:event_id]) if params[:album_id]
+      @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+      @commentable = Event.find_by_id(params[:event_id]) if params[:event_id]
     end
 
     # Only allow a trusted parameter "white list" through.
