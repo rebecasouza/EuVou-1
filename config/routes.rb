@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  #use_doorkeeper
+  use_doorkeeper
 
-  resources :comments, only: [:show, :destroy] 
+  resources :comments, only: [:create, :show, :destroy] 
   
   resources :events, shallow: true do
   	resources :comments, only: [:index, :create], module: 'events'
   end
 
-  resources :users
+  resources :users, only: [:index, :show, :update, :destroy]
+  
+  post 'registrations', to: 'registrations#create'
 
   resources :notifications
 
