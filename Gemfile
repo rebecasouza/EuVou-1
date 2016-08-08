@@ -34,8 +34,6 @@ gem 'capistrano-rails', group: :development
 gem 'figaro'
 
 # Image upload
-gem 'carrierwave'
-gem 'cloudinary'
 gem 'rmagick'
 
 # Authentication
